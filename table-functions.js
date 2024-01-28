@@ -3,6 +3,12 @@ const inquirer = require('inquirer');
 const connection = require('./db/connection.js');
 
 
+// Function to display data
+function displayData(data) {
+    console.table(data);
+    startApp();
+}
+
 // Function to view all departments
 function viewAllDepartments() {
     const query = 'SELECT * FROM department';
@@ -11,7 +17,7 @@ function viewAllDepartments() {
         if (error) {
             console.error('Error fetching departments:', error.message);
         } else {
-            displayDepartments(results);
+            displayData(results);
         }
     });
 }
@@ -26,7 +32,7 @@ function viewAllRoles() {
         if (error) {
             console.error('Error fetching roles:', error.message);
         } else {
-            displayRoles(results);
+            displayData(results);
         }
     });
 }
@@ -41,7 +47,7 @@ function viewAllEmployees() {
         if (error) {
             console.error('Error fetching employees:', error.message);
         } else {
-            displayEmployees(results);
+            displayData(results);
         }
     });
 }
@@ -62,7 +68,7 @@ function viewEmployeesByManager() {
                 if (error) throw error;
                 
                 if (results.length > 0) {
-                    displayEmployeesByManager(results);
+                    displayData(results);
                 } else {
                     console.log('No employees found for the provided Manager ID.');
                     startApp();
