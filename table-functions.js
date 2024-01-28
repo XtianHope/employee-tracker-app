@@ -30,7 +30,7 @@ function viewAllDepartments() {
 
 
 // Function to display all roles
-function displayRoles() {
+function displayRoles(roles) {
     console.table(roles);
     startApp();
 }
@@ -43,7 +43,7 @@ function viewAllRoles() {
         if (error) {
             console.error('Error fetching roles:', error.message);
         } else {
-            displayData(results);
+            displayRoles(results);
         }
     });
 }
