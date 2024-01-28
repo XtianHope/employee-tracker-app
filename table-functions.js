@@ -141,11 +141,32 @@ function viewEmployeesByDepartment() {
 
 // Function to add a department
 function addDepartment() {
-    connection.query('SELECT * FROM department', (error, results) => {
-        if (error) throw error;
-        console.table(results);
-        startApp();
-    });
+    inquirer
+        .prompt([
+            {
+                name: 'id',
+                type: 'input',
+                message: 'Enter the department ID:',
+            },
+            {
+                name: 'name',
+                type: 'input',
+                message: 'Enter the department name:',
+            },
+        ])
+        .then((answer) => {
+            const { id, name } = answer;
+            const query = 'INSERT INTO department (id, name) VALUES (?, ?)';
+
+            connection.query(query, [id, name], (error, results) => {
+                if (error) {
+                    console.error('Error adding department:', error.message);
+                } else {
+                    console.log('Department added successfully.');
+                    startApp();
+                }
+            });
+        });
 }
 
 
