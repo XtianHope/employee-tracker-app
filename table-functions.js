@@ -171,11 +171,32 @@ function addEmployee() {
 
 // Function to update employee role
 function updateEmployeeRole() {
-    connection.query('SELECT * FROM role', (error, results) => {
-        if (error) throw error;
-        console.table(results);
-        startApp();
-    });
+    inquirer
+        .prompt([
+            {
+                name: 'employeeId',
+                type: 'input',
+                message: 'Enter the Employee ID to update role:',
+            },
+            {
+                name: 'newRoleId',
+                type: 'input',
+                message: 'Enter the new Role ID:',
+            },
+        ])
+        .then((answers) => {
+            const { employeeId, newRoleId } = answers;
+            const query = 'UPDATE employee SET role_id = ? WHERE id = ?';
+
+            connection.query(query, [newRoleId, employeeId], (error, results) => {
+                if (error) {
+                    console.error('Error updating employee role:', error.message);
+                } else {
+                    console.log('Employee role updated successfully.');
+                    startApp();
+                }
+            });
+        });
 }
 
 // Function to view department budget
