@@ -151,11 +151,37 @@ function addDepartment() {
 
 // Function to add a role
 function addRole() {
-    connection.query('SELECT * FROM role', (error, results) => {
-        if (error) throw error;
-        console.table(results);
-        startApp();
-    });
+    inquirer
+        .prompt([
+            {
+                name: 'title',
+                type: 'input',
+                message: 'Enter the role title:',
+            },
+            {
+                name: 'salary',
+                type: 'input',
+                message: 'Enter the role salary:',
+            },
+            {
+                name: 'departmentId',
+                type: 'input',
+                message: 'Enter the department ID for the role:',
+            },
+        ])
+        .then((answers) => {
+            const { title, salary, departmentId } = answers;
+            const query = 'INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)';
+
+            connection.query(query, [title, salary, departmentId], (error, results) => {
+                if (error) {
+                    console.error('Error adding role:', error.message);
+                } else {
+                    console.log('Role added successfully.');
+                    startApp();
+                }
+            });
+        });
 }
 
 
