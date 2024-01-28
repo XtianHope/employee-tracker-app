@@ -10,7 +10,7 @@ function displayData(data) {
 
 
 // Function to display all departments
-function displayDepartments() {
+function displayDepartments(departments) {
     console.table(departments);
     startApp();
 }
@@ -23,7 +23,7 @@ function viewAllDepartments() {
         if (error) {
             console.error('Error fetching departments:', error.message);
         } else {
-            displayData(results);
+            displayDepartments(results);
         }
     });
 }
