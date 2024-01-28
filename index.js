@@ -10,7 +10,7 @@ function startApp() {
         name: 'action',
         type: 'list',
         message: 'Choose an action:',
-        choices: ['View All Departments', 'View All Roles', 'View All Employees', 'View Employee By Manager', 'Add A Department', 'Add A Role', 'Add An Employee', 'Update Employee Role', 'Exit']
+        choices: ['View All Departments', 'View All Roles', 'View All Employees', 'View Employees By Manager', 'Update Employee Manager', 'View Employees By Department', 'Add A Department', 'Add A Role', 'Add An Employee', 'Update Employee Role', 'View Department Budget', 'Delete Department', 'Delete Role', 'Delete Employee','Exit']
     })
     .then((answer) => {
         switch (answer.action) {
@@ -26,6 +26,12 @@ function startApp() {
             case 'View Employee By Manager':
                 viewEmployeeByManager();
                 break;
+            case 'Update Employee Manager':
+                updateEmployeeManager();
+                break;
+            case 'View Employees By Department':
+                viewEmployeesByDepartment();
+                break;
             case 'Add A Department':
                 addDepartment();
                 break;
@@ -37,6 +43,18 @@ function startApp() {
                 break;
             case 'Update Employee Role':
                 updateEmployeeRole();
+                break;
+            case 'View Department Budget':
+                viewDepartmentBudget();
+                break;
+            case 'Delete Department':
+                deleteDepartment();
+                break;
+            case 'Delete Role':
+                deleteRole();
+                break;
+            case 'Delete Employee':
+                deleteEmployee();
                 break;
             case 'Exit':
                 connection.end();
