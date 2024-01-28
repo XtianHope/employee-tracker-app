@@ -28,3 +28,22 @@ function viewAllDepartments() {
     });
 }
 
+
+// Function to display all roles
+function displayRoles() {
+    console.table(roles);
+    startApp();
+}
+
+// Function to view all roles
+function viewAllRoles() {
+    const query = 'SELECT * FROM role';
+
+    connection.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching roles:', error.message);
+        } else {
+            displayData(results);
+        }
+    });
+}
