@@ -167,3 +167,13 @@ function addEmployee() {
         startApp();
     });
 }
+
+
+// Function to update employee role
+function updateEmployeeRole() {
+    connection.query('SELECT * FROM role', (error, results) => {
+        if (error) throw error;
+        console.table(results);
+        startApp();
+    });
+}
