@@ -95,3 +95,28 @@ function viewEmployeesByManager() {
             });
         });
 }
+
+// Function to update employee manager
+function updateEmployeeManager() {
+    inquirer
+        .prompt([
+            {
+                name: 'employeeId',
+                type: 'input',
+                message: 'Enter the Employee ID to update:',
+            },
+            {
+                name: 'newManagerId',
+                type: 'input',
+                message: 'Enter the new Manager ID:',
+            },
+        ])
+        .then((answers) => {
+            const { employeeId, newManagerId } = answers;
+            connection.query('UPDATE employee SET manager_id = ? WHERE id = ?', [newManagerId, employeeId], (error, results) => {
+                if (error) throw error;
+                console.log('Employee manager updated successfully.');
+                displayData(results);
+            });
+        });
+}
