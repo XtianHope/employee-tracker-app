@@ -178,14 +178,27 @@ function updateEmployeeRole() {
     });
 }
 
-
 // Function to view department budget
 function viewDepartmentBudget() {
-    connection.query('SELECT * FROM department', (error, results) => {
-        if (error) throw error;
-        console.table(results);
-        startApp();
-    });
+    inquirer
+        .prompt({
+            name: 'departmentId',
+            type: 'input',
+            message: 'Enter the Department ID to view budget:',
+        })
+        .then((answer) => {
+            const departmentId = answer.departmentId;
+            const query = 'SELECT SUM(role.salary) AS total_budget FROM role WHERE role.department_id = ?';
+
+            connection.query(query, [departmentId], (error, results) => {
+                if (error) {
+                    console.error('Error fetching department budget:', error.message);
+                } else {
+                    console.log('Total Budget:', results[0].total_budget);
+                    startApp();
+                }
+            });
+        });
 }
 
 // Function to delete department
