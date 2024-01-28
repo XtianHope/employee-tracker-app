@@ -157,3 +157,13 @@ function addRole() {
         startApp();
     });
 }
+
+
+// Function to add an employee
+function addEmployee() {
+    connection.query('SELECT * FROM employee', (error, results) => {
+        if (error) throw error;
+        console.table(results);
+        startApp();
+    });
+}
