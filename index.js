@@ -66,5 +66,7 @@ function startApp() {
     });
 }
 
+
+
 // Call function to start the app
 startApp();
