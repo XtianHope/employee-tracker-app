@@ -124,8 +124,8 @@ function updateEmployeeManager() {
 
 
 // Function to display all employees by department
-function displayEmployeesByDepartment() {
-    console.table(employeesByDepartment);
+function displayEmployeesByDepartment(employees) {
+    console.table(employees);
     startApp();
 }
 
