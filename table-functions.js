@@ -9,3 +9,22 @@ function displayData(data) {
 }
 
 
+// Function to display all departments
+function displayDepartments() {
+    console.table(departments);
+    startApp();
+}
+
+// Function to view all departments
+function viewAllDepartments() {
+    const query = 'SELECT * FROM department';
+
+    connection.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching departments:', error.message);
+        } else {
+            displayData(results);
+        }
+    });
+}
+
