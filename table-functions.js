@@ -233,3 +233,27 @@ function deleteRole() {
             });
         });
 }
+
+
+// Function to delete employee
+function deleteEmployee() {
+    inquirer
+        .prompt({
+            name: 'employeeId',
+            type: 'input',
+            message: 'Enter the Employee ID to delete:',
+        })
+        .then((answer) => {
+            const employeeId = answer.employeeId;
+            const query = 'DELETE FROM employee WHERE id = ?';
+
+            connection.query(query, [employeeId], (error, results) => {
+                if (error) {
+                    console.error('Error deleting employee:', error.message);
+                } else {
+                    console.log('Employee deleted successfully.');
+                    startApp();
+                }
+            });
+        });
+}
