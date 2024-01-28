@@ -69,3 +69,29 @@ function viewAllEmployees() {
         }
     });
 }
+
+
+
+
+// Function to display all employees by manager
+function displayEmployeesByManager() {
+    console.table(employeesByManager);
+    startApp();
+}
+
+// Function to view all employees by manager
+function viewEmployeesByManager() {
+    inquirer
+        .prompt({
+            name: 'managerId',
+            type: 'input',
+            message: 'Enter the Manager ID:',
+        })
+        .then((answer) => {
+            const managerId = answer.managerId;
+            connection.query('SELECT * FROM employee WHERE manager_id = ?', [managerId], (error, results) => {
+                if (error) throw error;
+                displayData(results);
+            });
+        });
+}
