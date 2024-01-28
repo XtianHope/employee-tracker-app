@@ -47,3 +47,25 @@ function viewAllRoles() {
         }
     });
 }
+
+
+
+
+// Function to display all employees
+function displayEmployees() {
+    console.table(employees);
+    startApp();
+}
+
+// Function to view all employees
+function viewAllEmployees() {
+    const query = 'SELECT * FROM employee';
+
+    connection.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching employees:', error.message);
+        } else {
+            displayData(results);
+        }
+    });
+}
