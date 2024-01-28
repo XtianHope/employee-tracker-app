@@ -2,18 +2,6 @@
 const inquirer = require('inquirer');
 const connection = require('./db/connection.js');
 
-// Function to display data
-function displayData(data) {
-    console.table(data);
-    startApp();
-}
-
-
-// Function to display all departments
-function displayDepartments(departments) {
-    console.table(departments);
-    startApp();
-}
 
 // Function to view all departments
 function viewAllDepartments() {
@@ -29,11 +17,6 @@ function viewAllDepartments() {
 }
 
 
-// Function to display all roles
-function displayRoles(roles) {
-    console.table(roles);
-    startApp();
-}
 
 // Function to view all roles
 function viewAllRoles() {
@@ -50,13 +33,6 @@ function viewAllRoles() {
 
 
 
-
-// Function to display all employees
-function displayEmployees() {
-    console.table(employees);
-    startApp();
-}
-
 // Function to view all employees
 function viewAllEmployees() {
     const query = 'SELECT * FROM employee';
@@ -70,14 +46,6 @@ function viewAllEmployees() {
     });
 }
 
-
-
-
-// Function to display all employees by manager
-function displayEmployeesByManager(results) {
-    console.table(results);
-    startApp();
-}
 
 
 // Function to view all employees by manager
@@ -133,11 +101,6 @@ function updateEmployeeManager() {
 
 
 
-// Function to display all employees by department
-function displayEmployeesByDepartment(employees) {
-    console.table(employees);
-    startApp();
-}
 
 // Function to view all employees by department
 function viewEmployeesByDepartment() {
