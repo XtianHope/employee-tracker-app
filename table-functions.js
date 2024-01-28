@@ -74,10 +74,11 @@ function viewAllEmployees() {
 
 
 // Function to display all employees by manager
-function displayEmployeesByManager() {
-    console.table(employeesByManager);
+function displayEmployeesByManager(results) {
+    console.table(results);
     startApp();
 }
+
 
 // Function to view all employees by manager
 function viewEmployeesByManager() {
@@ -93,7 +94,7 @@ function viewEmployeesByManager() {
                 if (error) throw error;
                 
                 if (results.length > 0) {
-                    displayData(results);
+                    displayEmployeesByManager(results);
                 } else {
                     console.log('No employees found for the provided Manager ID.');
                     startApp();
