@@ -161,11 +161,42 @@ function addRole() {
 
 // Function to add an employee
 function addEmployee() {
-    connection.query('SELECT * FROM employee', (error, results) => {
-        if (error) throw error;
-        console.table(results);
-        startApp();
-    });
+    inquirer
+        .prompt([
+            {
+                name: 'firstName',
+                type: 'input',
+                message: 'Enter the employee\'s first name:',
+            },
+            {
+                name: 'lastName',
+                type: 'input',
+                message: 'Enter the employee\'s last name:',
+            },
+            {
+                name: 'roleId',
+                type: 'input',
+                message: 'Enter the role ID for the employee:',
+            },
+            {
+                name: 'managerId',
+                type: 'input',
+                message: 'Enter the manager ID for the employee (if applicable):',
+            },
+        ])
+        .then((answers) => {
+            const { firstName, lastName, roleId, managerId } = answers;
+            const query = 'INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)';
+
+            connection.query(query, [firstName, lastName, roleId, managerId], (error, results) => {
+                if (error) {
+                    console.error('Error adding employee:', error.message);
+                } else {
+                    console.log('Employee added successfully.');
+                    startApp();
+                }
+            });
+        });
 }
 
 
