@@ -137,3 +137,13 @@ function viewEmployeesByDepartment() {
         startApp();
     });
 }
+
+
+// Function to add a department
+function addDepartment() {
+    connection.query('SELECT * FROM department', (error, results) => {
+        if (error) throw error;
+        console.table(results);
+        startApp();
+    });
+}
