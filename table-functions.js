@@ -91,7 +91,13 @@ function viewEmployeesByManager() {
             const managerId = answer.managerId;
             connection.query('SELECT * FROM employee WHERE manager_id = ?', [managerId], (error, results) => {
                 if (error) throw error;
-                displayData(results);
+                
+                if (results.length > 0) {
+                    displayData(results);
+                } else {
+                    console.log('No employees found for the provided Manager ID.');
+                    startApp();
+                }
             });
         });
 }
