@@ -8,3 +8,6 @@ const connection = mysql.createConnection({
     password: 'password', // NOTE: Need to add MySQL password
     database: 'employee_tracker_db' // NOTE: Need to add MySQL database name
 });
+
+// Export connection for module use
+module.exports = connection;
