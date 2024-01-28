@@ -177,3 +177,13 @@ function updateEmployeeRole() {
         startApp();
     });
 }
+
+
+// Function to view department budget
+function viewDepartmentBudget() {
+    connection.query('SELECT * FROM department', (error, results) => {
+        if (error) throw error;
+        console.table(results);
+        startApp();
+    });
+}
