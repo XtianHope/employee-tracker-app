@@ -113,10 +113,13 @@ function updateEmployeeManager() {
         ])
         .then((answers) => {
             const { employeeId, newManagerId } = answers;
-            connection.query('UPDATE employee SET manager_id = ? WHERE id = ?', [newManagerId, employeeId], (error, results) => {
+            connection.query('UPDATE employee SET manager_id = ? WHERE id = ?', [newManagerId, employeeId], (error) => {
                 if (error) throw error;
-                console.log('Employee manager updated successfully.');
-                displayData(results);
+                connection.query('SELECT * FROM employee WHERE id = ?', [employeeId], (fetchError, results) => {
+                    if (fetchError) throw fetchError;
+                    console.log('Employee manager updated successfully.');
+                    displayData(results);
+                });
             });
         });
 }
