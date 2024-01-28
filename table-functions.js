@@ -187,3 +187,26 @@ function viewDepartmentBudget() {
         startApp();
     });
 }
+
+// Function to delete department
+function deleteDepartment() {
+    inquirer
+        .prompt({
+            name: 'departmentId',
+            type: 'input',
+            message: 'Enter the Department ID to delete:',
+        })
+        .then((answer) => {
+            const departmentId = answer.departmentId;
+            const query = 'DELETE FROM department WHERE id = ?';
+
+            connection.query(query, [departmentId], (error, results) => {
+                if (error) {
+                    console.error('Error deleting department:', error.message);
+                } else {
+                    console.log('Department deleted successfully.');
+                    startApp();
+                }
+            });
+        });
+}
