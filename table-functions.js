@@ -210,3 +210,26 @@ function deleteDepartment() {
             });
         });
 }
+
+// Function to delete role
+function deleteRole() {
+    inquirer
+        .prompt({
+            name: 'roleId',
+            type: 'input',
+            message: 'Enter the Role ID to delete:',
+        })
+        .then((answer) => {
+            const roleId = answer.roleId;
+            const query = 'DELETE FROM role WHERE id = ?';
+
+            connection.query(query, [roleId], (error, results) => {
+                if (error) {
+                    console.error('Error deleting role:', error.message);
+                } else {
+                    console.log('Role deleted successfully.');
+                    startApp();
+                }
+            });
+        });
+}
