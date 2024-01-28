@@ -9,7 +9,7 @@ function startApp() {
     .prompt({
         name: 'action',
         type: 'list',
-        message: 'Choose an action:',
+        message: 'Choose An Action:',
         choices: ['View All Departments', 'View All Roles', 'View All Employees', 'View Employees By Manager', 'Update Employee Manager', 'View Employees By Department', 'Add A Department', 'Add A Role', 'Add An Employee', 'Update Employee Role', 'View Department Budget', 'Delete Department', 'Delete Role', 'Delete Employee','Exit']
     })
     .then((answer) => {
