@@ -131,10 +131,37 @@ function displayEmployeesByDepartment() {
 
 // Function to view all employees by department
 function viewEmployeesByDepartment() {
-    connection.query('SELECT * FROM department', (error, results) => {
-        if (error) throw error;
-        console.table(results);
-        startApp();
+    connection.query('SELECT * FROM department', (error, departments) => {
+        if (error) {
+            console.error('Error fetching departments:', error.message);
+            startApp();
+        } else {
+            const departmentChoices = departments.map((department) => ({
+                name: department.name,
+                value: department.id,
+            }));
+
+            inquirer
+                .prompt({
+                    name: 'departmentId',
+                    type: 'list',
+                    message: 'Select a department:',
+                    choices: departmentChoices,
+                })
+                .then((answer) => {
+                    const { departmentId } = answer;
+                    const query = 'SELECT * FROM employee WHERE department_id = ?';
+
+                    connection.query(query, [departmentId], (error, employees) => {
+                        if (error) {
+                            console.error('Error fetching employees by department:', error.message);
+                        } else {
+                            console.table(employees);
+                        }
+                        startApp();
+                    });
+                });
+        }
     });
 }
 
