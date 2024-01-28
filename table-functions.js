@@ -65,7 +65,7 @@ function viewAllEmployees() {
         if (error) {
             console.error('Error fetching employees:', error.message);
         } else {
-            displayData(results);
+            displayEmployees(results);
         }
     });
 }
