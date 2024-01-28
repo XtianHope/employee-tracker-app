@@ -44,3 +44,6 @@ function startApp() {
         console.log(error);
     });
 }
+
+// Call function to start the app
+startApp();
