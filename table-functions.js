@@ -120,3 +120,20 @@ function updateEmployeeManager() {
             });
         });
 }
+
+
+
+// Function to display all employees by department
+function displayEmployeesByDepartment() {
+    console.table(employeesByDepartment);
+    startApp();
+}
+
+// Function to view all employees by department
+function viewEmployeesByDepartment() {
+    connection.query('SELECT * FROM department', (error, results) => {
+        if (error) throw error;
+        console.table(results);
+        startApp();
+    });
+}
