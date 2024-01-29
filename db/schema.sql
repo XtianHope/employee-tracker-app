@@ -8,13 +8,13 @@ DROP TABLE IF EXISTS employee;
 
 -- Create Table for Departments
 CREATE TABLE department (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER auto-increment PRIMARY KEY,
     name VARCHAR(30) NOT NULL -- To hold department name
 );
 
 -- Create table for Roles
 CREATE TABLE role (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER auto-increment PRIMARY KEY,
     title VARCHAR(30) NOT NULL, -- To hold role title
     salary DECIMAL, -- To hold role salary
     department_id INTEGER, -- To hold reference to department role belongs to
@@ -23,7 +23,7 @@ CREATE TABLE role (
 
 -- Create table for Employees
 CREATE TABLE employee (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER auto-increment PRIMARY KEY,
     first_name VARCHAR(30), -- To hold employee first name
     last_name VARCHAR(30), -- To hold employee last name
     role_id INTEGER, -- To hold reference to role employee has
