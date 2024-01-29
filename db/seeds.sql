@@ -4,10 +4,6 @@ INSERT INTO department (id, name) VALUES
 ('Engineering'),
 ('Finance'),
 ('Legal');
-('Sales'),
-('Engineering'),
-('Finance'),
-('Legal');
 
 -- Insert data into Role Table --ID is auto-incremented
 INSERT INTO role (id, title, salary, department_id) VALUES
