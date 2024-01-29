@@ -1,7 +1,6 @@
 // Import inquirer & connection
 const inquirer = require('inquirer');
 const connection = require('./db/connection.js');
-const functions = require('./table-functions.js');
 
 // Function to start the app
 // Defining inquirer prompt & logic for each action
