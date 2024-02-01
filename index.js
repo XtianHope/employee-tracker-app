@@ -24,7 +24,7 @@ function startApp() {
                 viewAllEmployees();
                 break;
             case 'View Employees By Manager':
-                viewEmployeeByManager();
+                viewEmployeesByManager();
                 break;
             case 'Update Employee Manager':
                 updateEmployeeManager();
