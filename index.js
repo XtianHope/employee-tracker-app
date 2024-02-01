@@ -192,7 +192,7 @@ function viewEmployeesByDepartment() {
                 })
                 .then((answer) => {
                     const { departmentId } = answer;
-                    const query = 'SELECT * FROM employee WHERE department_id = ?';
+                    const query = 'SELECT * FROM employee WHERE role_id IN (SELECT id FROM role WHERE department_id = ?)';
 
                     connection.query(query, [departmentId], (error, employees) => {
                         if (error) {
